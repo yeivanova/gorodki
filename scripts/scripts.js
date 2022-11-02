@@ -7,7 +7,7 @@ const gorodkiLeft3 = document.getElementById("eb1xD9VCAM71");
 const gorodkiRight1 = document.getElementById("e2kGyfrgE5b1");
 const gorodkiRight2 = document.getElementById("eWj3J9z5EZI1");
 const gorodkiRight3 = document.getElementById("ehOK4zvcwVY1");
-const topFormAnimation = document.getElementById("e8lnxQgZiLj1");
+const topFormAnimation = document.getElementById("ez6pCIRgsxO1");
 const bottomFormAnimation = document.getElementById("ernsSRPiYQf1");
 
 AOS.init();
@@ -15,12 +15,34 @@ AOS.init();
 const upButton = $(".up-button"),
   header = $("#header"),
   navbar = $("#navbar"),
-  sticky = header.offset().top,
   rules = $(".rule-text"),
-  modal = $("#modalInfo");
+  modal = $("#modalInfo"),
+  slider = $(".facts-slider");
+
+function mobileOnlySlider() {
+  slider.slick({
+    infinite: false,
+    dots: false,
+    arrows: false,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    lazyLoad: 'ondemand',
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1.15,
+          slidesToScroll: 1,
+        }
+      }
+    ]
+  });
+}
 
 const tabletWidth = 1024;
 let isSmallDevice = $(window).width() < tabletWidth;
+
+isSmallDevice && mobileOnlySlider();
 
 let lastId,
   navbarHeight = navbar.outerHeight() + 15,
@@ -38,35 +60,35 @@ $(".show-rule").click(function () {
 });
 
 let counterClick = 0,
-currentAnimationLeft = gorodkiLeft1,
-currentAnimationRight = gorodkiRight1;
+  currentAnimationLeft = gorodkiLeft1,
+  currentAnimationRight = gorodkiRight1;
 
 $("#switch").click(function () {
-  switch (counterClick) { 
-    case 1: 
-    $('.svg').hide();
-    currentAnimationLeft = gorodkiLeft2;
-    currentAnimationRight = gorodkiRight2;
+  switch (counterClick) {
+    case 1:
+      $(".svg").hide();
+      currentAnimationLeft = gorodkiLeft2;
+      currentAnimationRight = gorodkiRight2;
       break;
-    case 2: 
-      $('.svg').hide();
+    case 2:
+      $(".svg").hide();
       currentAnimationLeft = gorodkiLeft3;
       currentAnimationRight = gorodkiRight3;
       break;
     default:
-      $('.svg').hide();
+      $(".svg").hide();
       currentAnimationLeft = gorodkiLeft1;
       currentAnimationRight = gorodkiRight1;
-    }
-    currentAnimationLeft.style.display = "block";
-    currentAnimationRight.style.display = "block";
-    currentAnimationLeft.svgatorPlayer.ready(function () {
-      this.play();
-    });
-    currentAnimationRight.svgatorPlayer.ready(function () {
-      this.play();
-    });
-    counterClick = (counterClick + 1) % 3;
+  }
+  currentAnimationLeft.style.display = "block";
+  currentAnimationRight.style.display = "block";
+  currentAnimationLeft.svgatorPlayer.ready(function () {
+    this.play();
+  });
+  currentAnimationRight.svgatorPlayer.ready(function () {
+    this.play();
+  });
+  counterClick = (counterClick + 1) % 3;
 });
 
 $("#info").click(function () {
@@ -88,17 +110,20 @@ $(".form").each(function () {
     $(this).find("input").val("").prop("disabled", true);
 
     if ($(this).hasClass("form-small")) {
-      $(this).siblings(".show-form").fadeIn().text("Подписка оформлена").addClass('success');
+      $(this)
+        .siblings(".show-form")
+        .fadeIn()
+        .text("Подписка оформлена")
+        .addClass("success");
       $(this).siblings(".form-decoration").fadeIn();
       $(this).hide();
     }
 
-    if ( $(this).parent().hasClass("intro")) {
+    if ($(this).parent().hasClass("intro")) {
       topFormAnimation.svgatorPlayer.ready(function () {
         this.play();
       });
-    }
-    else {
+    } else {
       bottomFormAnimation.svgatorPlayer.ready(function () {
         this.play();
       });
@@ -129,8 +154,14 @@ $(window).resize(function () {
     navbar.hide();
     $(".rule-text").hide();
     $(".logo, .show-form, .form-decoration").show();
+    if (!slider.hasClass('slick-initialized')){
+      mobileOnlySlider();
+    }
   } else {
     $(".logo, #navbar, .form-decoration, .rule-text:not(.hidden)").show();
+      if (slider.hasClass('slick-initialized')){
+        slider.slick('unslick');
+    }
   }
   $(".form-small").hide();
   winner.svgatorPlayer.ready(function () {
@@ -143,11 +174,9 @@ $(document).mouseup(function (e) {
     modal.fadeOut(300);
   }
 
-  if (
-    !rules.is(e.target) &&
+  if (!rules.is(e.target) &&
     rules.has(e.target).length === 0 &&
-    isSmallDevice
-  ) {
+    isSmallDevice) {
     rules.fadeOut(300);
   }
 });
@@ -216,16 +245,7 @@ menuItems.click(function (e) {
   e.preventDefault();
 });
 
-let stickyHeader = () => {
-  if ($(window).scrollTop() > sticky) {
-    header.addClass("sticky");
-  } else {
-    header.removeClass("sticky");
-  }
-};
-
 $(window).scroll(function () {
-  stickyHeader();
   if ($(this).scrollTop()) {
     upButton.fadeIn();
     upButton

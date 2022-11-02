@@ -1,4 +1,5 @@
 @import "reset";
+@import "slick";
 @import "aos";
 
 @font-face {
@@ -38,9 +39,9 @@ h1 {
 
   @media (min-width: 768px) {
     min-height: 364px;
-    margin-bottom: 180px;
     padding-top: 80px;
     margin-top: 120px;
+    margin-bottom: 140px;
     font-size: 44px;
     background-size: contain;
   }
@@ -127,21 +128,6 @@ header {
     bottom: -1px;
     border-bottom: 1px solid #000;
     z-index: 0;
-  }
-}
-
-.sticky {
-  @media (max-width: 1023px) {
-    position: fixed;
-    left: 20px;
-    right: 20px;
-    top: 0;
-    z-index: 10;
-  }
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    left: 30px;
-    right: 30px;
   }
 }
 
@@ -240,10 +226,13 @@ header {
 .nav-menu {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  gap: 20px;
   justify-content: center;
   align-items: center;
   padding: 0;
+
+  @media (min-width: 768px) {
+    gap: 20px;
+  }
 
   li {
     position: relative;
@@ -379,10 +368,10 @@ header {
 }
 
 .intro .form-small {
-  margin-top: -160px;
+  margin-top: -132px;
 
   @media (min-width: 768px) {
-    margin-top: -112px;
+    margin-top: -177px;
   }
 }
 
@@ -408,9 +397,9 @@ header {
   line-height: 1.25;
   padding: 10px;
   width: 100%;
-  max-width: 256px;
   margin-bottom: 20px;
   border: 1px solid var(--primary-color);
+  border-radius: 0;
 
   @media (min-width: 768px) {
     font-size: 18px;
@@ -436,11 +425,11 @@ header {
   width: 100%;
   max-width: 280px;
   font-weight: 700;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.25;
   min-height: 41px;
   padding: 0;
-  margin: auto;
+  margin: 16px auto 14px;
   border: none;
   color: var(--background-color);
   background-color: var(--primary-color);
@@ -455,6 +444,7 @@ header {
 
   @media (min-width: 1024px) {
     max-width: none;
+    margin: auto;
   }
 
   &:hover,
@@ -502,21 +492,23 @@ header {
   height: 305px;
   top: -264px;
   left: 50%;
-  transform: translateX(-45%);
+  transform: translateX(-35%);
   max-width: none;
 
   @media (min-width: 768px) {
-    width: 874px;
-    height: 593px;
-    top: -507px;
+    width: 915px;
+    height: auto;
+    top: -450px;
   }
 
   @media (min-width: 1440px) {
+    width: 1080px;
+    height: 593px;
     position: absolute;
-    right: -340px;
+    right: -590px;
     left: initial;
     transform: none;
-    top: -350px;
+    top: -355px;
     margin: 0;
   }
 }
@@ -538,7 +530,7 @@ ul {
   white-space: nowrap;
 
   @media (max-width: 1023px) {
-    display: none;
+    white-space: normal;
   }
 
   &:before {
@@ -546,6 +538,10 @@ ul {
     display: block;
     position: absolute;
     z-index: -1;
+
+    @media (max-width: 1023px) {
+      display: none;
+    }
   }
 }
 
@@ -628,14 +624,14 @@ ul {
 
     @media (min-width: 1024px) {
       display: grid;
-      grid-template-columns: 88px auto auto auto;
+      grid-template-columns: 88px repeat(3, auto);
       grid-template-rows: auto auto 450px auto auto;
       grid-template-areas:
-        ". rule1 rule1 rule2"
-        ". . rule3 rule4"
+        ". rule5 rule5 rule2"
+        ". . rule8 rule1"
         "image image image image"
-        ". . . rule5"
-        "rule6 rule6 rule7 rule8";
+        ". . . rule3"
+        "rule7 rule7 rule6 rule4";
       gap: 17px 9px;
     }
 
@@ -678,6 +674,10 @@ ul {
         padding: 15px 12px;
 
         @media (max-width: 1023px) {
+          width: 204px;
+          font-size: 10px;
+          line-height: 1.25;
+          padding: 10px 18px;
           position: absolute;
           top: 0;
           left: 50%;
@@ -686,13 +686,6 @@ ul {
           background-color: var(--primary-color);
           color: var(--background-color);
           z-index: 2;
-        }
-
-        @media (max-width: 767px) {
-          width: 204px;
-          font-size: 10px;
-          line-height: 1.25;
-          padding: 10px 18px;
         }
 
         @media (min-width: 1280px) {
@@ -713,14 +706,18 @@ ul {
       top: 8px;
 
       @media (min-width: 1024px) {
-        top: initial;
+        top: 0;
         grid-area: rule1;
       }
 
       .frame-decoration {
-        top: 50%;
-        left: 0;
-        transform: translate(-92px, 0);
+        left: 50%;
+        bottom: 0;
+        transform: translate(-62px, 180px);
+
+        @media (min-width: 1280px) {
+          transform: translate(-77px, 209px);
+        }
       }
     }
 
@@ -739,12 +736,17 @@ ul {
       @media (min-width: 1024px) {
         top: initial;
         grid-area: rule3;
+        margin-bottom: 53px;
       }
 
       .frame-decoration {
-        top: 50%;
-        left: 0;
-        transform: translate(-115px, 0);
+        top: initial;
+        left: 50%;
+        transform: translate(-37px, -152px);
+
+        @media (min-width: 1280px) {
+          transform: translate(-37px, -164px);
+        }
       }
     }
 
@@ -765,25 +767,25 @@ ul {
           transform: translate(-77px, 209px);
         }
       }
+      .frame-decoration {
+        left: 50%;
+        top: 0;
+        transform: translate(-395px, -320px);
+      }
     }
 
     .rule-5 {
       bottom: 350px;
 
       @media (min-width: 1024px) {
-        bottom: 0;
+        bottom: initial;
         grid-area: rule5;
-        margin-bottom: 53px;
       }
 
       .frame-decoration {
-        top: initial;
-        left: 50%;
-        transform: translate(-37px, -152px);
-
-        @media (min-width: 1280px) {
-          transform: translate(-37px, -164px);
-        }
+        top: 50%;
+        left: 0;
+        transform: translate(-92px, 0);
       }
     }
 
@@ -798,11 +800,10 @@ ul {
       .frame-decoration {
         left: 50%;
         top: 0;
-
-        transform: translate(-91px, -173px);
+        transform: translate(-128px, -242px);
 
         @media (min-width: 1280px) {
-          transform: translate(-136px, -218px);
+          transform: translate(-135px, -285px);
         }
       }
     }
@@ -818,10 +819,11 @@ ul {
       .frame-decoration {
         left: 50%;
         top: 0;
-        transform: translate(-128px, -242px);
+
+        transform: translate(-91px, -173px);
 
         @media (min-width: 1280px) {
-          transform: translate(-159px, -285px);
+          transform: translate(-136px, -218px);
         }
       }
     }
@@ -835,9 +837,9 @@ ul {
       }
 
       .frame-decoration {
-        left: 50%;
-        top: 0;
-        transform: translate(-395px, -320px);
+        top: 50%;
+        left: 0;
+        transform: translate(-115px, 0);
       }
     }
 
@@ -851,6 +853,9 @@ ul {
       }
 
       .platform-image {
+        position: relative;
+        z-index: -2;
+
         @media (min-width: 1280px) {
           max-width: 1239px;
           margin-left: -12px;
@@ -878,6 +883,7 @@ ul {
   transform: translateX(-50%);
   border: none;
   background-color: var(--primary-color);
+  text-align: center;
   z-index: 1;
 
   @media (min-width: 1024px) {
@@ -1007,7 +1013,7 @@ ul {
 
 .girl1 {
   position: absolute;
-  top: -100px;
+  top: -230px;
   left: -10px;
   max-width: 237px;
 
@@ -1163,27 +1169,35 @@ ul {
     }
   }
 
-  ul {
-    display: grid;
-    gap: 18px;
-    list-style: none;
-
+  .facts-slider {
     @media (min-width: 1024px) {
+      display: grid;
+      gap: 18px;
       grid-template-columns: repeat(3, 1fr);
     }
 
     .fact {
       padding: 30px 20px 40px;
+      font-size: 12px;
+      line-height: 1.25;
       border: 1px solid var(--text-color);
       box-shadow: 6px 3px 0 var(--primary-color);
       background-color: var(--background-color);
+      text-align: left;
       transition: border-color 0.2s ease-in-out;
 
+      @media (max-width: 1023px) {
+        max-width: 300px;
+        margin-right: 11px;
+      }
+
       @media (min-width: 1024px) {
+        font-size: 15px;
         box-shadow: 10px 4px 0 var(--primary-color);
       }
 
       @media (min-width: 1440px) {
+        font-size: 18px;
         padding: 46px 30px 58px;
       }
 
@@ -1209,6 +1223,14 @@ ul {
       }
     }
   }
+}
+
+.slick-track {
+  display: flex !important;
+}
+
+.slick-slide {
+  height: inherit !important;
 }
 
 .inner-wrapper {
@@ -1265,6 +1287,10 @@ ul {
   .inner-wrapper {
     max-width: 320px;
 
+    @media (min-width: 768px) {
+      max-width: 360px;
+    }
+
     @media (min-width: 1024px) {
       max-width: none;
     }
@@ -1285,7 +1311,7 @@ ul {
   height: 498px;
   max-width: 372px;
   max-height: 320px;
-  margin: -118px auto -44px;
+  margin: -136px auto -69px;
   z-index: 0;
 
   @media (min-width: 768px) {
