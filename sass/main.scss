@@ -25,6 +25,7 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -86,7 +87,7 @@ h2 {
   max-width: 720px;
   padding: 40px 15px;
   margin: auto;
-  overflow: hidden;
+  overflow-x: hidden;
 
   @media (min-width: 1024px) {
     max-width: 994px;
@@ -94,7 +95,6 @@ h2 {
 
   @media (min-width: 1280px) {
     max-width: 1280px;
-    overflow: visible;
   }
 }
 

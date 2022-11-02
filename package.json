@@ -1,5 +1,6 @@
 {
-  "name": "layout",
+  "name": "gorodki",
+  "homepage": "https://yeivanova.github.io/gorodki/",
   "version": "1.0.0",
   "description": "layout",
   "main": "index.js",
