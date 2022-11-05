@@ -908,9 +908,12 @@ h2 {
 
 .wrapper {
   max-width: 720px;
-  padding: 40px 15px;
+  padding: 40px 15px 0;
   margin: auto;
   overflow-x: hidden; }
+  @media (min-width: 768px) {
+    .wrapper {
+      padding-bottom: 40px; } }
   @media (min-width: 1024px) {
     .wrapper {
       max-width: 994px; } }
@@ -925,15 +928,6 @@ header {
   align-items: center;
   border-top: 1px solid var(--text-color);
   background-color: var(--background-color); }
-  @media (max-width: 1023px) {
-    header {
-      position: absolute;
-      left: 30px;
-      right: 30px; } }
-  @media (max-width: 767px) {
-    header {
-      left: 20px;
-      right: 20px; } }
   header:after {
     content: "";
     display: block;
@@ -957,11 +951,11 @@ header {
   .logo:before {
     content: "";
     display: block;
-    width: 170px;
-    height: 50px;
+    width: 123px;
+    height: 35px;
     position: absolute;
-    left: -21px;
-    top: -7px;
+    left: -14px;
+    top: 0;
     background: url("../images/logo-bg.png") center center no-repeat;
     background-size: contain;
     z-index: 0; }
@@ -976,7 +970,7 @@ header {
         left: 10px; } }
   .logo img {
     position: relative;
-    max-width: 145px;
+    max-width: 105px;
     z-index: 1; }
     @media (min-width: 768px) {
       .logo img {
@@ -1229,11 +1223,11 @@ header {
 
 .intro-decoration svg {
   position: absolute;
-  width: 450px;
-  height: 305px;
-  top: -264px;
+  width: 624px;
+  height: 354px;
+  top: -304px;
   left: 50%;
-  transform: translateX(-35%);
+  transform: translateX(-30%);
   max-width: none; }
   @media (min-width: 768px) {
     .intro-decoration svg {
@@ -1516,6 +1510,7 @@ ul {
   left: 50%;
   width: 38px;
   height: 40px;
+  padding: 0;
   margin: auto;
   font-weight: 700;
   font-size: 18px;
@@ -1697,8 +1692,11 @@ ul {
 
 .page-section {
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   text-align: center; }
+  @media (min-width: 768px) {
+    .page-section {
+      margin-bottom: 80px; } }
   @media (min-width: 1024px) {
     .page-section {
       margin-bottom: 120px;
@@ -1706,7 +1704,11 @@ ul {
 
 .facts h2 {
   position: relative;
-  display: inline-block; }
+  display: inline-block;
+  margin-top: 30px; }
+  @media (min-width: 1024px) {
+    .facts h2 {
+      margin-top: 0; } }
   .facts h2:before {
     content: "";
     position: absolute;
@@ -1731,13 +1733,17 @@ ul {
         height: 111px; } }
 
 @media (min-width: 1024px) {
+  .facts .slick-slider .slick-track {
+    gap: 18px; } }
+
+@media (min-width: 1024px) {
   .facts .facts-slider {
-    display: grid;
-    gap: 18px;
-    grid-template-columns: repeat(3, 1fr); } }
+    display: flex;
+    gap: 18px; } }
 
 .facts .facts-slider .fact {
   padding: 30px 20px 40px;
+  margin-bottom: 10px;
   font-size: 12px;
   line-height: 1.25;
   border: 1px solid var(--text-color);
@@ -1751,6 +1757,7 @@ ul {
       margin-right: 11px; } }
   @media (min-width: 1024px) {
     .facts .facts-slider .fact {
+      flex-basis: 32%;
       font-size: 15px;
       box-shadow: 10px 4px 0 var(--primary-color); } }
   @media (min-width: 1440px) {
@@ -1828,7 +1835,8 @@ ul {
       max-width: none; } }
 
 .stay-in-touch .form {
-  position: relative; }
+  position: relative;
+  margin-top: 50px; }
   @media (min-width: 1024px) {
     .stay-in-touch .form {
       max-width: 740px;
@@ -1837,18 +1845,16 @@ ul {
 .bottom-decoration {
   width: 559px;
   height: 498px;
-  max-width: 372px;
-  max-height: 320px;
-  margin: -136px auto -69px;
+  max-width: 478px;
+  max-height: 380px;
+  margin: -158px auto -57px;
   z-index: 0; }
   @media (min-width: 768px) {
     .bottom-decoration {
       max-width: none;
-      margin: -187px auto 73px; } }
+      margin: -187px auto 34px; } }
   @media (min-width: 1024px) {
     .bottom-decoration {
-      width: 559px;
-      height: 498px;
       position: absolute;
       top: -142px;
       right: -220px;
@@ -1858,7 +1864,7 @@ ul {
       top: -154px;
       right: -74px; } }
   .bottom-decoration svg {
-    transform: translateX(-10px); }
+    transform: translateX(-58px); }
     @media (min-width: 768px) {
       .bottom-decoration svg {
         transform: translateX(-77px); } }

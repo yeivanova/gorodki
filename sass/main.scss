@@ -85,9 +85,13 @@ h2 {
 
 .wrapper {
   max-width: 720px;
-  padding: 40px 15px;
+  padding: 40px 15px 0;
   margin: auto;
   overflow-x: hidden;
+
+  @media (min-width: 768px) {
+    padding-bottom: 40px;
+  }
 
   @media (min-width: 1024px) {
     max-width: 994px;
@@ -105,17 +109,6 @@ header {
   align-items: center;
   border-top: 1px solid var(--text-color);
   background-color: var(--background-color);
-
-  @media (max-width: 1023px) {
-    position: absolute;
-    left: 30px;
-    right: 30px;
-  }
-
-  @media (max-width: 767px) {
-    left: 20px;
-    right: 20px;
-  }
 
   &:after {
     content: "";
@@ -145,11 +138,11 @@ header {
   &:before {
     content: "";
     display: block;
-    width: 170px;
-    height: 50px;
+    width: 123px;
+    height: 35px;
     position: absolute;
-    left: -21px;
-    top: -7px;
+    left: -14px;
+    top: 0;
     background: url("../images/logo-bg.png") center center no-repeat;
     background-size: contain;
     z-index: 0;
@@ -168,7 +161,7 @@ header {
 
   img {
     position: relative;
-    max-width: 145px;
+    max-width: 105px;
     z-index: 1;
 
     @media (min-width: 768px) {
@@ -488,11 +481,11 @@ header {
 
 .intro-decoration svg {
   position: absolute;
-  width: 450px;
-  height: 305px;
-  top: -264px;
+  width: 624px;
+  height: 354px;
+  top: -304px;
   left: 50%;
-  transform: translateX(-35%);
+  transform: translateX(-30%);
   max-width: none;
 
   @media (min-width: 768px) {
@@ -875,6 +868,7 @@ ul {
   left: 50%;
   width: 38px;
   height: 40px;
+  padding: 0;
   margin: auto;
   font-weight: 700;
   font-size: 18px;
@@ -1128,8 +1122,12 @@ ul {
 
 .page-section {
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   text-align: center;
+
+  @media (min-width: 768px) {
+    margin-bottom: 80px;
+  }
 
   @media (min-width: 1024px) {
     margin-bottom: 120px;
@@ -1141,6 +1139,11 @@ ul {
   h2 {
     position: relative;
     display: inline-block;
+    margin-top: 30px;
+
+    @media (min-width: 1024px) {
+      margin-top: 0;
+    }
 
     &:before {
       content: "";
@@ -1169,15 +1172,21 @@ ul {
     }
   }
 
+  .slick-slider .slick-track {
+    @media (min-width: 1024px) {
+      gap: 18px;
+    }
+  }
+
   .facts-slider {
     @media (min-width: 1024px) {
-      display: grid;
+      display: flex;
       gap: 18px;
-      grid-template-columns: repeat(3, 1fr);
     }
 
     .fact {
       padding: 30px 20px 40px;
+      margin-bottom: 10px;
       font-size: 12px;
       line-height: 1.25;
       border: 1px solid var(--text-color);
@@ -1192,6 +1201,7 @@ ul {
       }
 
       @media (min-width: 1024px) {
+        flex-basis: 32%;
         font-size: 15px;
         box-shadow: 10px 4px 0 var(--primary-color);
       }
@@ -1298,6 +1308,7 @@ ul {
 
   .form {
     position: relative;
+    margin-top: 50px;
 
     @media (min-width: 1024px) {
       max-width: 740px;
@@ -1309,19 +1320,17 @@ ul {
 .bottom-decoration {
   width: 559px;
   height: 498px;
-  max-width: 372px;
-  max-height: 320px;
-  margin: -136px auto -69px;
+  max-width: 478px;
+  max-height: 380px;
+  margin: -158px auto -57px;
   z-index: 0;
 
   @media (min-width: 768px) {
     max-width: none;
-    margin: -187px auto 73px;
+    margin: -187px auto 34px;
   }
 
   @media (min-width: 1024px) {
-    width: 559px;
-    height: 498px;
     position: absolute;
     top: -142px;
     right: -220px;
@@ -1334,7 +1343,7 @@ ul {
   }
 
   svg {
-    transform: translateX(-10px);
+    transform: translateX(-58px);
 
     @media (min-width: 768px) {
       transform: translateX(-77px);

@@ -128,7 +128,32 @@ $(".form").each(function () {
         this.play();
       });
     }
+
+    var thisForm = $(this);
+    setInterval(function () {
+      if (thisForm.parent().hasClass("intro")) {
+        topFormAnimation.classList.add('playByClick');
+      } else {
+        bottomFormAnimation.classList.add('playByClick');
+      }
+    }, 1000);
   });
+});
+
+topFormAnimation.addEventListener('click', function () {
+  if ($(this).hasClass('playByClick')) {
+    topFormAnimation.svgatorPlayer.ready(function () {
+      this.play();
+    });
+  }
+});
+
+bottomFormAnimation.addEventListener('click', function () {
+  if ($(this).hasClass('playByClick')) {
+    bottomFormAnimation.svgatorPlayer.ready(function () {
+      this.play();
+    });
+  }
 });
 
 $(".show-form").click(function () {
@@ -159,10 +184,11 @@ $(window).resize(function () {
     }
   } else {
     $(".logo, #navbar, .form-decoration, .rule-text:not(.hidden)").show();
-      if (slider.hasClass('slick-initialized')){
+      if (slider.hasClass('slick-initialized')) {
         slider.slick('unslick');
-    }
+      }
   }
+
   $(".form-small").hide();
   winner.svgatorPlayer.ready(function () {
     this.stop();
@@ -262,7 +288,7 @@ $(document).ready(function () {
   });
 });
 
-$(".rule-3")
+$(".rule-8")
   .mouseenter(function (e) {
     winner.svgatorPlayer.ready(function () {
       this.play();
